@@ -2,21 +2,23 @@
 //////////////// INIT ELEMENTS ////////////////
 ////////////////////////////////////////////////
 
-//////// Variables 
-const canvas = document.getElementById("canvas");
-const context = canvas.getContext('2d');
-const maxParticles = 1024;
+//////// Variables
+let canvas = document.createElement("canvas");
+let context = canvas.getContext('2d');
+const maxParticles = 128;
 const maxLifetime = 1000;
 let width, height, particles = [];
 
-//////// Event listeners 
+//////// Event listeners
 window.addEventListener("DOMContentLoaded", start);
-canvas.addEventListener("click", start);
 
-//////// Init function 
+//////// start function 
 function start() {
     resizeCanvas();
-    console.log("Initialize");
+    canvas.addEventListener("click", start);
+    document.body.style.background = 'url(' + canvas.toDataURL() + ')';
+    console.log("Initialized");
+    animationLoop();
 }
 
 //////// Reset width and height variables 
@@ -135,4 +137,3 @@ function drawParticles() {
 
 
 ////////////////////////////////////////////////////////////////
-animationLoop();
